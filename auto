@@ -1,0 +1,25 @@
+from archinstall.default_profiles.xorg import HyprlandProfile
+from gi.repository import Gtk
+
+class MyGUI:
+    def __init__(self):
+        self.hyprland_profile = HyprlandProfile()
+
+        # Create a window
+        self.window = Gtk.Window(title='Arch Linux Installer')
+
+        # Create a button
+        self.hyprland_button = Gtk.Button('Install Hyprland')
+
+        # Connect the button's clicked signal to the do_on_select() method
+        self.hyprland_button.connect('clicked', self.do_on_select)
+
+        # Add the button to the window
+        self.window.add(self.hyprland_button)
+
+        # Show the window
+        self.window.show_all()
+
+    def do_on_select(self):
+        # Install Hyprland
+        self.hyprland_profile.install()
